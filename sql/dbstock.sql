@@ -1,6 +1,16 @@
 create database stockDB;
 use stockDB;
 
+ create table TblPago (
+ idPago int auto_increment,
+ idDescripcion varchar(20),
+ primary key (idPago), );
+ 
+ create table TblBanco (
+ idBanco int auto_increment,
+ primary key (idBanco)
+ Nombre varchar(20),);
+
 create table TblSupplier (
 SupplierID int auto_increment,
 primary key (SupplierID),
@@ -66,8 +76,21 @@ description varchar(30) );
 create table Tblcustomers (
 IdCustomers int auto_increment,
 primary key (IdCustomers),
-FirstName varchar (30),
-LastName varchar(30) );
+Name varchar (50),
+LastName varchar(30),
+Domicilio varchar(50),
+NumExt varchar
+Colonia varchar(50),
+Ciudad varchar(30),
+Pais varchar(20),
+Estado varchar(20),
+Municipio varchar(20), 
+Cp varchar (10),
+Telefono varchar (20),
+Rfc  varchar(15),
+MetodoPago varchar(20),
+Banco varchar(20),
+email varchar(30), );
 
 create table TblRepair (
 RepairId int auto_increment,
@@ -83,6 +106,15 @@ SaleID int auto_increment,
 IdCustomers int,
 StockOutID int,
 OrderDate datetime,
+TipoPersona varchar(20),
+Moneda varchar(15),
+Descuento double,
+Iva double, 
+Credito bool,
 primary key (SaleID),
+ foreign key (idPAgo) references TblPago (idPago),
  foreign key (StockOutID) references TblStockOut (StockOutID),
  foreign key (IdCustomers) references Tblcustomers (IdCustomers) );
+ 
+
+ 
