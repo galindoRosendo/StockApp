@@ -13,10 +13,13 @@ class CreateTblProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblProduct', function (Blueprint $table) {
+                $table->increments('ProductID');
+                $table->string('ProductName',30);
+                $table->string('ProductDescription',30);
+                $table->string('UnitOfMeasure',12);
+                $table->timestamps();
+                });
     }
 
     /**

@@ -13,10 +13,15 @@ class CreateTblStockOutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_stock_outs', function (Blueprint $table) {
-            $table->increments('id');
+      Schema::create('TblStockOut', function (Blueprint $table) {
+            $table->increments('StockOutID');
+            $table->dateTime('DateOut');
+            $table->integer('QuantityOut');
+            $table->double('UnitPrice');
+            $table->integer('StockInID');
+            $table->foreign('StockInID')->references('StockInID')->on('TblStockIn');
             $table->timestamps();
-        });
+            });
     }
 
     /**

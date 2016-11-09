@@ -13,10 +13,15 @@ class CreateTblPurchaseOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_purchase_orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblPurchaseOrder', function (Blueprint $table) {
+                $table->increments('POID');
+                $table->string('PONumber');
+                $table->dateTime('PODate')
+                $table->double('POValue');
+                $table->integer('SupplierID');
+                $table->foreign('SupplierID')->references('SupplierID')->on('TblSupplier');
+                $table->timestamps();
+                });
     }
 
     /**

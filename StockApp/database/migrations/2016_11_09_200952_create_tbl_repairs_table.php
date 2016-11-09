@@ -13,10 +13,15 @@ class CreateTblRepairsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_repairs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblRepair', function (Blueprint $table) {
+          $table->increments('RepairId');
+          $table->dateTime('OrderDate ');
+          $table->integer('IdTruck');
+          $table->integer('StockOutID');
+          $table->foreign('IdTruck')->references('IdTruck')->on('Tbltrucks');
+          $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
+          $table->timestamps();
+          });
     }
 
     /**

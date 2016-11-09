@@ -13,10 +13,11 @@ class CreateTbltrucksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbltrucks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('Tbltrucks', function (Blueprint $table) {
+              $table->increments('IdTruck');
+              $table->string('Descripcion',30);
+              $table->timestamps();
+              });
     }
 
     /**

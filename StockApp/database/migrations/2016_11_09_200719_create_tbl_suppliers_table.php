@@ -13,10 +13,11 @@ class CreateTblSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_suppliers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblSupplier', function (Blueprint $table) {
+                  $table->increments('SupplierID');
+                  $table->string('SupplierName',30);
+                  $table->timestamps();
+              });
     }
 
     /**

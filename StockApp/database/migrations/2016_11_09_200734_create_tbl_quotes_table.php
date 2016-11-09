@@ -13,10 +13,14 @@ class CreateTblQuotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_quotes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblQuotes', function (Blueprint $table) {
+              $table->increments('QuoteID');
+              $table->integer('QuoteNo');
+              $table->double('QuoteValue');
+              $table->integer('Supplier_id');
+              $table->foreign('Supplier_id')->references('SupplierID')->on('TblSupplier');
+              $table->timestamps();
+              });
     }
 
     /**

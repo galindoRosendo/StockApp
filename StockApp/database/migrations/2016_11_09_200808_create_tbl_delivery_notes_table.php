@@ -13,10 +13,12 @@ class CreateTblDeliveryNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_delivery_notes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblDeliveryNote', function (Blueprint $table) {
+              $table->increments('DeliveryNoteID');
+              $table->integer('DeliveryNoteNo');
+              $table->dateTime('DeliveryNoteDate');
+              $table->timestamps();
+              });
     }
 
     /**

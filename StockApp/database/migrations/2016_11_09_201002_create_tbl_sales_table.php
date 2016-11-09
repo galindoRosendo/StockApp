@@ -13,10 +13,22 @@ class CreateTblSalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_sales', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblSales', function (Blueprint $table) {
+          $table->increments('SaleID');
+          $table->dateTime('OrderDate');
+          $table->string('TipoPersona',20);
+          $table->string('Moneda',15)
+          $table->double('Descuento');
+          $table->double('Iva');
+          $table->boolean('Credito')
+          $table->integer('IdCustomers');
+          $table->integer('StockOutID');
+          $table->integer('idPago');
+          $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
+          $table->foreign('IdCustomers')->references('IdCustomers')->on('Tblcustomers ');
+          $table->foreign('idPago')->references('idPago')->on('TblPago');
+          $table->timestamps();
+          });
     }
 
     /**

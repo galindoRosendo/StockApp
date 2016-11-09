@@ -13,10 +13,11 @@ class CreateTblPagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_pagos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblPago', function (Blueprint $table) {
+          $table->increments('idPago');
+          $table->string('idDescripcion',20);
+          $table->timestamps();
+      });
     }
 
     /**

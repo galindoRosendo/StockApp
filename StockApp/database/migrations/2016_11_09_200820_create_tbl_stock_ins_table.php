@@ -13,10 +13,19 @@ class CreateTblStockInsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_stock_ins', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+      Schema::create('TblStockIn', function (Blueprint $table) {
+              $table->increments('StockInID');
+              $table->dateTime('DateIn');
+              $table->integer('QuantityIN');
+              $table->double('UnitCos');
+              $table->integer('SupplierID');
+              $table->integer('ProductID');
+              $table->integer('DeliveryNoteID');
+              $table->foreign('SupplierID')->references('SupplierID')->on('TblSupplier');
+              $table->foreign('ProductID')->references('ProductID')->on('TblProduct ');
+              $table->foreign('DeliveryNoteID')->references('DeliveryNoteID')->on('TblDeliveryNote');
+              $table->timestamps();
+              });
     }
 
     /**
