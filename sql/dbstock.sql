@@ -4,12 +4,12 @@ use stockDB;
  create table TblPago (
  idPago int auto_increment,
  idDescripcion varchar(20),
- primary key (idPago), );
+ primary key (idPago));
  
  create table TblBanco (
  idBanco int auto_increment,
- primary key (idBanco)
- Nombre varchar(20),);
+ primary key (idBanco),
+ Nombre varchar(20));
 
 create table TblSupplier (
 SupplierID int auto_increment,
@@ -79,7 +79,7 @@ primary key (IdCustomers),
 Name varchar (50),
 LastName varchar(30),
 Domicilio varchar(50),
-NumExt varchar
+NumExt varchar(10),
 Colonia varchar(50),
 Ciudad varchar(30),
 Pais varchar(20),
@@ -90,7 +90,7 @@ Telefono varchar (20),
 Rfc  varchar(15),
 MetodoPago varchar(20),
 Banco varchar(20),
-email varchar(30), );
+email varchar(30));
 
 create table TblRepair (
 RepairId int auto_increment,
@@ -115,6 +115,3 @@ primary key (SaleID),
  foreign key (idPAgo) references TblPago (idPago),
  foreign key (StockOutID) references TblStockOut (StockOutID),
  foreign key (IdCustomers) references Tblcustomers (IdCustomers) );
- 
-
- 
