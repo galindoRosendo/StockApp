@@ -18,7 +18,7 @@ class CreateTblStockOutsTable extends Migration
             $table->dateTime('DateOut');
             $table->integer('QuantityOut');
             $table->double('UnitPrice');
-            $table->integer('StockInID');
+            $table->integer('StockInID')->unsigned();
             $table->foreign('StockInID')->references('StockInID')->on('TblStockIn');
             $table->timestamps();
             });

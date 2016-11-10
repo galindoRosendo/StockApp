@@ -17,15 +17,15 @@ class CreateTblSalesTable extends Migration
           $table->increments('SaleID');
           $table->dateTime('OrderDate');
           $table->string('TipoPersona',20);
-          $table->string('Moneda',15)
+          $table->string('Moneda',15);
           $table->double('Descuento');
           $table->double('Iva');
-          $table->boolean('Credito')
-          $table->integer('IdCustomers');
-          $table->integer('StockOutID');
-          $table->integer('idPago');
+          $table->boolean('Credito');
+          $table->integer('IdCustomers')->unsigned();
+          $table->integer('StockOutID')->unsigned();
+          $table->integer('idPago')->unsigned();
           $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
-          $table->foreign('IdCustomers')->references('IdCustomers')->on('Tblcustomers ');
+          $table->foreign('IdCustomers')->references('IdCustomers')->on('Tblcustomers');
           $table->foreign('idPago')->references('idPago')->on('TblPago');
           $table->timestamps();
           });

@@ -17,12 +17,12 @@ class CreateTblStockInsTable extends Migration
               $table->increments('StockInID');
               $table->dateTime('DateIn');
               $table->integer('QuantityIN');
-              $table->double('UnitCos');
-              $table->integer('SupplierID');
-              $table->integer('ProductID');
-              $table->integer('DeliveryNoteID');
-              $table->foreign('SupplierID')->references('SupplierID')->on('TblSupplier');
-              $table->foreign('ProductID')->references('ProductID')->on('TblProduct ');
+              $table->double('UnitCost');
+              $table->integer('Supplier_ID')->unsigned();
+              $table->integer('ProductID')->unsigned();
+              $table->integer('DeliveryNoteID')->unsigned();
+              $table->foreign('Supplier_ID')->references('Supplier_ID')->on('TblSupplier');
+              $table->foreign('ProductID')->references('ProductID')->on('TblProduct');
               $table->foreign('DeliveryNoteID')->references('DeliveryNoteID')->on('TblDeliveryNote');
               $table->timestamps();
               });

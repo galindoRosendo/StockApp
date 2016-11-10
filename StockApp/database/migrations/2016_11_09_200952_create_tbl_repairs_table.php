@@ -15,9 +15,9 @@ class CreateTblRepairsTable extends Migration
     {
       Schema::create('TblRepair', function (Blueprint $table) {
           $table->increments('RepairId');
-          $table->dateTime('OrderDate ');
-          $table->integer('IdTruck');
-          $table->integer('StockOutID');
+          $table->dateTime('OrderDate');
+          $table->integer('IdTruck')->unsigned();
+          $table->integer('StockOutID')->unsigned();
           $table->foreign('IdTruck')->references('IdTruck')->on('Tbltrucks');
           $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
           $table->timestamps();

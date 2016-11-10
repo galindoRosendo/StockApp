@@ -17,8 +17,8 @@ class CreateTblQuotesTable extends Migration
               $table->increments('QuoteID');
               $table->integer('QuoteNo');
               $table->double('QuoteValue');
-              $table->integer('Supplier_id');
-              $table->foreign('Supplier_id')->references('SupplierID')->on('TblSupplier');
+              $table->integer('Supplier_id')->unsigned();
+              $table->foreign('Supplier_id')->references('Supplier_id')->on('TblSupplier');
               $table->timestamps();
               });
     }

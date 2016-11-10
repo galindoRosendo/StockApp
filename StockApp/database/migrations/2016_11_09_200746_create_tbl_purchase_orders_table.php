@@ -16,10 +16,10 @@ class CreateTblPurchaseOrdersTable extends Migration
       Schema::create('TblPurchaseOrder', function (Blueprint $table) {
                 $table->increments('POID');
                 $table->string('PONumber');
-                $table->dateTime('PODate')
+                $table->dateTime('PODate');
                 $table->double('POValue');
-                $table->integer('SupplierID');
-                $table->foreign('SupplierID')->references('SupplierID')->on('TblSupplier');
+                $table->integer('Supplier_ID')->unsigned();
+                $table->foreign('Supplier_ID')->references('Supplier_ID')->on('TblSupplier');
                 $table->timestamps();
                 });
     }
