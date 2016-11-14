@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                   @if(isset($Productos))
-                  @include('layouts.productos')
+                  @include('layouts.formularioProductos')
 
                   @else
                   @include('layouts.dashboard')

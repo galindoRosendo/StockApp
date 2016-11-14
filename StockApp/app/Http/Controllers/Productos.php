@@ -40,6 +40,23 @@ class Productos extends Controller
     public function store(Request $request)
     {
         //
+      //  dd($request->descripcion);
+      $this->validate($request, [
+        'nombre'=>'required',
+        'descripcion'=>'required',
+        'unidad'=>'required'
+
+
+      ]);
+
+      $producto = new TblProduct();
+      $producto->ProductName = $request->nombre;
+      $producto->ProductDescription = $request->descripcion;
+      $producto->UnitOfMeasure = $request->unidad;
+
+      $producto->save();
+      dd('datos guardados');
+
     }
 
     /**
