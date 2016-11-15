@@ -13,7 +13,7 @@ class CreateTblSuppliersTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblSupplier', function (Blueprint $table) {
+      Schema::create('tbl_suppliers', function (Blueprint $table) {
                   $table->increments('Supplier_id');
                   $table->string('SupplierName',30);
                   $table->timestamps();

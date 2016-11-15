@@ -40,7 +40,7 @@ class Productos extends Controller
     public function store(Request $request)
     {
         //
-      //  dd($request->descripcion);
+      //dd($request->descripcion);
       $this->validate($request, [
         'nombre'=>'required',
         'descripcion'=>'required',
@@ -55,7 +55,7 @@ class Productos extends Controller
       $producto->UnitOfMeasure = $request->unidad;
 
       $producto->save();
-      dd('datos guardados');
+      return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos']);
 
     }
 
@@ -102,5 +102,11 @@ class Productos extends Controller
     public function destroy($id)
     {
         //
+        TblProduct::destroy($id);
+        return back();
+    }
+    public function mostrar(){
+      $producto=TblProduct::all();
+      return view('welcome')->with(['productos'=>$producto]);
     }
 }

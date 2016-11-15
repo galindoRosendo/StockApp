@@ -13,12 +13,12 @@ class CreateTblQuotesTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblQuotes', function (Blueprint $table) {
+      Schema::create('tbl_quotes', function (Blueprint $table) {
               $table->increments('QuoteID');
               $table->integer('QuoteNo');
               $table->double('QuoteValue');
               $table->integer('Supplier_id')->unsigned();
-              $table->foreign('Supplier_id')->references('Supplier_id')->on('TblSupplier');
+              $table->foreign('Supplier_id')->references('Supplier_id')->on('tbl_suppliers');
               $table->timestamps();
               });
     }

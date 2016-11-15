@@ -13,7 +13,7 @@ class CreateTblBancosTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblBanco', function (Blueprint $table) {
+      Schema::create('tbl_bancos', function (Blueprint $table) {
               $table->increments('idBanco');
               $table->string('Nombre',20);
               $table->timestamps();

@@ -13,13 +13,13 @@ class CreateTblRepairsTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblRepair', function (Blueprint $table) {
+      Schema::create('tbl_repairs', function (Blueprint $table) {
           $table->increments('RepairId');
           $table->dateTime('OrderDate');
           $table->integer('IdTruck')->unsigned();
           $table->integer('StockOutID')->unsigned();
-          $table->foreign('IdTruck')->references('IdTruck')->on('Tbltrucks');
-          $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
+          $table->foreign('IdTruck')->references('IdTruck')->on('tbltrucks');
+          $table->foreign('StockOutID')->references('StockOutID')->on('tbl_stock_outs');
           $table->timestamps();
           });
     }

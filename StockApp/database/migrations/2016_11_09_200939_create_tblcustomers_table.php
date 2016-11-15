@@ -13,7 +13,7 @@ class CreateTblcustomersTable extends Migration
      */
     public function up()
     {
-      Schema::create('Tblcustomers', function (Blueprint $table) {
+      Schema::create('tblcustomers', function (Blueprint $table) {
             $table->increments('IdCustomers');
             $table->string('Nombre',50);
             $table->string('Apellido',30);

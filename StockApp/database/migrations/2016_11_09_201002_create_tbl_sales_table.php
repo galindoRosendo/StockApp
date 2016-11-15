@@ -13,7 +13,7 @@ class CreateTblSalesTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblSales', function (Blueprint $table) {
+      Schema::create('tbl_sales', function (Blueprint $table) {
           $table->increments('SaleID');
           $table->dateTime('OrderDate');
           $table->string('TipoPersona',20);
@@ -24,9 +24,9 @@ class CreateTblSalesTable extends Migration
           $table->integer('IdCustomers')->unsigned();
           $table->integer('StockOutID')->unsigned();
           $table->integer('idPago')->unsigned();
-          $table->foreign('StockOutID')->references('StockOutID')->on('TblStockOut');
-          $table->foreign('IdCustomers')->references('IdCustomers')->on('Tblcustomers');
-          $table->foreign('idPago')->references('idPago')->on('TblPago');
+          $table->foreign('StockOutID')->references('StockOutID')->on('tbl_stock_outs');
+          $table->foreign('IdCustomers')->references('IdCustomers')->on('tblcustomers');
+          $table->foreign('idPago')->references('idPago')->on('tbl_pagos');
           $table->timestamps();
           });
     }

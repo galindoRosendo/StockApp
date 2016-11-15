@@ -13,7 +13,7 @@ class CreateTblDeliveryNotesTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblDeliveryNote', function (Blueprint $table) {
+      Schema::create('tbl_delivery_notes', function (Blueprint $table) {
               $table->increments('DeliveryNoteID');
               $table->integer('DeliveryNoteNo');
               $table->dateTime('DeliveryNoteDate');

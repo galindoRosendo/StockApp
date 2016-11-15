@@ -13,10 +13,10 @@ class CreateTblProductsTable extends Migration
      */
     public function up()
     {
-      Schema::create('TblProduct', function (Blueprint $table) {
+      Schema::create('tbl_products', function (Blueprint $table) {
                 $table->increments('ProductID');
                 $table->string('ProductName',30);
-                $table->string('ProductDescription',30);
+                $table->string('ProductDescription',100);
                 $table->string('UnitOfMeasure',12);
                 $table->timestamps();
                 });
