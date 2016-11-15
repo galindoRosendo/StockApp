@@ -11,6 +11,16 @@
                   @if(isset($Productos))
                   @include('layouts.formularioProductos')
 
+                  @elseif (isset($Entradas))
+                  @include('layouts.formularioEntradas')
+
+                  @elseif (isset($Provedor))
+                  @include('layouts.formularioProvedores')
+                  @include('layouts.tablaProvedores')
+
+                  @elseif (isset($editProvedor))
+                  @include('layouts.editProvedor')
+
                   @else
                   @include('layouts.dashboard')
 

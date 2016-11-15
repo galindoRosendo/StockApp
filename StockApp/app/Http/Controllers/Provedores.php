@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\TblProduct;
+use App\TblSupplier;
 
-class Productos extends Controller
+use Illuminate\Support\Facades\DB;
+
+class Provedores extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +20,8 @@ class Productos extends Controller
     public function index()
     {
         //
-        
-        return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos']);
+        $provedores= TblSupplier::all();
+        return view('home')->with(['Provedor'=>true,'Encabezado'=>'Provedores','Provedores'=>$provedores]);
     }
 
     /**
@@ -41,23 +43,18 @@ class Productos extends Controller
     public function store(Request $request)
     {
         //
-      //dd($request->descripcion);
-      $this->validate($request, [
-        'nombre'=>'required',
-        'descripcion'=>'required',
-        'unidad'=>'required'
+        $this->validate($request,[
+          'SupplierName'=>'required'
+        ]);
 
+        $provedor = new TblSupplier();
+        $provedor->SupplierName=$request->SupplierName;
 
-      ]);
-
-      $producto = new TblProduct();
-      $producto->ProductName = $request->nombre;
-      $producto->ProductDescription = $request->descripcion;
-      $producto->UnitOfMeasure = $request->unidad;
-
-      $producto->save();
-      return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos']);
-
+        if ($provedor->save()) {
+          return back()->with('msj','Datos guardados');
+        }else{
+        return back()->with('errMsj','Error al guardas los datos');
+        }
     }
 
     /**
@@ -80,6 +77,8 @@ class Productos extends Controller
     public function edit($id)
     {
         //
+        $provedor= TblSupplier::where('Supplier_id',$id)->first();
+        return view('home')->with(['Encabezado'=>'Provedores','editProvedor'=>true,'provedor'=>$provedor]);
     }
 
     /**
@@ -92,6 +91,21 @@ class Productos extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+          'SupplierName'=>'required'
+        ]);
+
+        $provedor = TblSupplier::where('Supplier_id',$id)->first();
+
+        $verificacion = DB::table('tbl_suppliers')
+            ->where('Supplier_id', $id)
+            ->update(['SupplierName' => $request->SupplierName]);
+
+        if ($verificacion) {
+          return back()->with('msj','Datos guardados');
+        }else{
+        return back()->with('errMsj','Error al guardas los datos');
+        }
     }
 
     /**
@@ -103,11 +117,7 @@ class Productos extends Controller
     public function destroy($id)
     {
         //
-        TblProduct::destroy($id);
+        $provedor= TblSupplier::where('Supplier_id',$id)->delete();
         return back();
-    }
-    public function mostrar(){
-      $producto=TblProduct::all();
-      return view('welcome')->with(['productos'=>$producto]);
     }
 }

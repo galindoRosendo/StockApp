@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\TblStockIn;
+
 class Entradas extends Controller
 {
     /**
@@ -16,6 +18,7 @@ class Entradas extends Controller
     public function index()
     {
         //
+        return view('home')->with(['Entradas'=>true,'Encabezado'=>'Entradas']);
     }
 
     /**

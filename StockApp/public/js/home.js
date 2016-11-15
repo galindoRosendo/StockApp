@@ -1,8 +1,12 @@
 $(document).ready(function(){
   $("#btnProductos").hide();
   $("#btnEntradas").hide();
+  $("#btnProvedores").hide();
   $("#btnInventario").click(function(){
-    $("#btnProductos").toggle();
-    $("#btnEntradas").toggle();
+    $("#btnProductos").slideToggle(200);
+    $("#btnEntradas").slideToggle(200);
+  });
+  $("#btnRegistrar").click(function(){
+    $("#btnProvedores").slideToggle(200);
   });
 });
