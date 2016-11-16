@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\TblProduct;
 
+use Illuminate\Support\Facades\DB;
+
 class Productos extends Controller
 {
     /**
@@ -18,7 +20,10 @@ class Productos extends Controller
     public function index()
     {
         //
-        return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos']);
+         $productos = TblProduct::all();
+        return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos','productos' => $productos]);
+
+
     }
 
     /**
@@ -54,8 +59,12 @@ class Productos extends Controller
       $producto->ProductDescription = $request->descripcion;
       $producto->UnitOfMeasure = $request->unidad;
 
-      $producto->save();
-      return view('home')->with(['Productos'=>true,'Encabezado'=>'Productos']);
+      if($producto->save()){
+        return back()->with('msj','Datos Guardados');
+      } else {
+        return back()->with('msjError','Error al guardar datos');
+      }
+
 
     }
 
@@ -78,7 +87,8 @@ class Productos extends Controller
      */
     public function edit($id)
     {
-        //
+      $producto = TblProduct::where('ProductID',$id)->first();
+      return view('home')->with(['editProducto' =>true, 'Encabezado'=>'Productos', 'producto'=>$producto]);
     }
 
     /**
@@ -90,7 +100,19 @@ class Productos extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+          'ProductName'=>'required','ProductDescription'=>'required','UnitOfMeasure'=>'required'
+        ]);
+
+        $verificacion = DB::table('tbl_products')
+        ->where('ProductID',$id)
+        ->update(['ProductName'=>$request->ProductName,'ProductDescription'=>$request->ProductDescription,'UnitOfMeasure'=>$request->UnitOfMeasure]);
+        if($verificacion){
+          return back()->with('msj','Datos Guardados');
+        } else {
+          return back()->with('msjError','Error al guardar datos');
+        }
+
     }
 
     /**
@@ -102,11 +124,8 @@ class Productos extends Controller
     public function destroy($id)
     {
         //
-        TblProduct::destroy($id);
+        TblProduct::where('ProductID',$id)->delete();
         return back();
     }
-    public function mostrar(){
-      $producto=TblProduct::all();
-      return view('welcome')->with(['productos'=>$producto]);
-    }
+
 }

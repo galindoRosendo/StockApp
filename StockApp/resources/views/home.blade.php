@@ -10,6 +10,9 @@
                 <div class="panel-body">
                   @if(isset($Productos))
                   @include('layouts.formularioProductos')
+                  @include('layouts.tablaProducto')
+                  @elseif(isset($editProducto))
+                  @include('layouts.editProducto')
 
                   @else
                   @include('layouts.dashboard')

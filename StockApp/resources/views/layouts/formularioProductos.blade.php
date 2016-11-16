@@ -1,3 +1,10 @@
+@if(session()->has('msj'))
+<div class="alert alert-success" role="alert">{{ session('msj')}}</div>
+@endif
+@if(session()->has('msjError'))
+<div class="alert alert-danger" role="alert">Error al guardar los datos</div>
+@endif
+
 <form class="form-horizontal" role="form" method="POST" action="{{ url('productos') }}">
   {{ csrf_field() }}
   <div class="form-group">
